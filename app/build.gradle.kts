@@ -51,6 +51,9 @@ dependencies {
     implementation(libs.androidx.compose.ui.tooling.preview)
     implementation(libs.androidx.compose.material3)
     implementation(libs.androidx.navigation.compose)
+    //implementation(libs.firebase.firestore.ktx)
+    implementation(libs.androidx.datastore.core)
+    //implementation(libs.firebase.crashlytics.buildtools)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
@@ -96,6 +99,12 @@ dependencies {
     //implementation("androidx.compose.material3:material3:1.x.x")
     // For date formatting utility (optional but helpful)
     implementation("org.jetbrains.kotlinx:kotlinx-datetime:0.7.1")
+    dependencies {
+        //implementation("com.google.dagger:hilt-android:2.48") // Use the latest version
+        //ksp("com.google.dagger:hilt-android-compiler:2.48") // Use ksp or kapt
+        // ... other dependencies
+    }
+
 
 
 }

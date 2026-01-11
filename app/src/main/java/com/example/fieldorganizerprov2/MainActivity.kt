@@ -1,9 +1,11 @@
 package com.example.fieldorganizerprov2
 
+import android.os.Build
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import androidx.annotation.RequiresApi
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Text
@@ -47,6 +49,7 @@ import kotlinx.coroutines.launch
 
 
 class MainActivity : ComponentActivity() {
+    @RequiresApi(Build.VERSION_CODES.O)
     @OptIn(ExperimentalPagerApi::class)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -65,7 +68,9 @@ class MainActivity : ComponentActivity() {
                     composable("home") {
                         Home(
                             navController = navController,
-                            viewModel = viewModel)
+                            viewModel = viewModel,
+                            onLoginClicked = {},
+                        )
                     }
                     composable("contacts") {
                         ContactList(
@@ -98,6 +103,7 @@ class MainActivity : ComponentActivity() {
 
 // on below line we are creating a
 // composable function for our tab layout
+@RequiresApi(Build.VERSION_CODES.O)
 @OptIn(ExperimentalUnitApi::class)
 @ExperimentalPagerApi
 @Composable
@@ -238,6 +244,7 @@ fun Tabs(pagerState: PagerState?) {
 
 // on below line we are creating a tab content method
 // in which we will be displaying the individual page of our tab .
+@RequiresApi(Build.VERSION_CODES.O)
 @ExperimentalPagerApi
 @Composable
 fun TabsContent(pagerState: PagerState) {
@@ -257,7 +264,8 @@ fun TabsContent(pagerState: PagerState) {
             // and specifying data as Home Screen.
             0 -> Home(
                 navController = navController,
-                viewModel = viewModel()
+                viewModel = viewModel(),
+                onLoginClicked = {}
             ) //TabContentScreen(data = "Welcome to Home Screen")
             // on below line we are calling tab content screen
             // and specifying data as Shopping Screen.
